@@ -13,8 +13,8 @@ node(label) {
   build(
     job: '../../bitbucket-infra/ccif-build-docker/master', 
     parameters: [
-      // booleanParam(name: 'PUBLISH_TO_DOCKER_HUB', value: false), 
-      // booleanParam(name: 'PUBLISH_LATEST', value: false), 
+      booleanParam(name: 'PUBLISH_TO_DOCKER_HUB', value: true), 
+      booleanParam(name: 'PUBLISH_LATEST', value: true), 
       string(name: 'GIT_URL', value: gitUrl), 
       string(name: 'GIT_BRANCH', value: gitBranch), 
       string(name: 'DOCKERFILE', value: 'Dockerfile'), 
