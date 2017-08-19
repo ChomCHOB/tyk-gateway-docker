@@ -1,8 +1,10 @@
-def gitUrl = 'https://github.com/ChomCHOB/tyk-pump-docker'
-def appName = 'ccif-one-repo-rule-infra'
+def gitUrl = 'https://github.com/ChomCHOB/tyk-gateway-docker'
+def gitBranch = 'refs/heads/master'
+
+echo sh(returnStdout: true, script: 'env')
 
 build(
-  job: '../bitbucket-infra/ccif-build-docker/master', 
+  job: '../../bitbucket-infra/ccif-build-docker/master', 
   parameters: [
     // booleanParam(name: 'PUBLISH_TO_DOCKER_HUB', value: false), 
     // booleanParam(name: 'PUBLISH_LATEST', value: false), 
