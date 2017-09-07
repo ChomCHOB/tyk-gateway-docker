@@ -166,6 +166,9 @@ ENV PACKAGES="\
   bash \
   git \
   openssl \
+  autoconf \
+  automake \
+  libtool \
   ca-certificates \
   python3.4 \
   python3.4-dev \
@@ -180,6 +183,7 @@ RUN set -ex; \
   && echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories; \
 
   # Add the packages, with a CDN-breakage fallback if needed
+  apk add --no-cache libstdc++; \
   apk add --no-cache $PACKAGES || \
     (sed -i -e 's/dl-cdn/dl-4/g' /etc/apk/repositories && apk add --no-cache $PACKAGES); \
 
@@ -209,6 +213,7 @@ RUN set -ex; \
   wget -nv -O /protobuf-python-$PROTOVERSION.tar.gz https://github.com/google/protobuf/releases/download/v$PROTOVERSION/protobuf-python-$PROTOVERSION.tar.gz; \
   cd / && tar -xzf protobuf-python-$PROTOVERSION.tar.gz; \
   cd /protobuf-$PROTOVERSION/ \
+    && ./autogen.sh \
     && ./configure -prefix=/usr \
     && make \
     && make install; \
