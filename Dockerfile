@@ -74,7 +74,8 @@ RUN set -eux; \
   apk del .build-deps; \
   rm -rf /tmp/*; \
   rm -rf /usr/local/go/*; \
-  rm -rf /go/*;
+  rm -rf /go/*; \
+  rm -rf /root/go/*;
 
 COPY ["tyk.conf", "entrypoint.sh", "/opt/tyk-gateway/"]
 
