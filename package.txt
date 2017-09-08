@@ -1,2 +1,2 @@
 name=tyk-gateway-docker
-version=edge
+version=2.3.8-r0
