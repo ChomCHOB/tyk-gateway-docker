@@ -13,6 +13,7 @@ LABEL \
   Version=$TYK_VERSION
 
 RUN set -eux; \
+  apk add --no-cache tini; \
 	apk add --no-cache --virtual .build-deps \
 		bash \
 		gcc \
@@ -85,4 +86,4 @@ WORKDIR ${TYK_DEST_DIR}
 
 EXPOSE $TYK_LISTEN_PORT
 
-CMD ["/opt/tyk-gateway/entrypoint.sh"]
+ENTRYPOINT ["/sbin/tini", "--", "/opt/tyk-gateway/entrypoint.sh"]
