@@ -1,7 +1,7 @@
 FROM alpine:3.6
 
 ENV GOLANG_VERSION="1.8" \
-  TYK_VERSION="2.3.8" \
+  TYK_VERSION="2.3.9" \
   TYK_LANG="" \
   TYK_LISTEN_PORT="8080" \
   TYK_SECRET="352d20ee67be67f6340b4c0605b044b7" \
@@ -34,13 +34,13 @@ RUN set -eux; \
   cd /tmp/tyk-${TYK_VERSION}; \
   \
   # patch tyk for 2.3.8
-  sed -i '40 s/^/\/\//' main.go; \
-  sed -i '815 s/^/\/\//' main.go; \
-  sed -i '832 s/^/\/\//' main.go; \
-  sed -i '847 s/^/\/\//' main.go; \
-  sed -i '864 s/^/\/\//' main.go; \
-  sed -i '874 s/^/\/\//' main.go; \
-  sed -i '358,361 s/^/\/\//' plugins.go; \
+  # sed -i '40 s/^/\/\//' main.go; \
+  # sed -i '815 s/^/\/\//' main.go; \
+  # sed -i '832 s/^/\/\//' main.go; \
+  # sed -i '847 s/^/\/\//' main.go; \
+  # sed -i '864 s/^/\/\//' main.go; \
+  # sed -i '874 s/^/\/\//' main.go; \
+  # sed -i '358,361 s/^/\/\//' plugins.go; \
   \
   # build tyk
   go get -t -d -v; \    
