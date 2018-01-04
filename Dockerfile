@@ -1,7 +1,7 @@
 FROM alpine:3.6
 
 ENV GOLANG_VERSION="1.8" \
-  TYK_VERSION="2.3.9" \
+  TYK_VERSION="2.4.2" \
   TYK_LANG="" \
   TYK_LISTEN_PORT="8080" \
   TYK_SECRET="352d20ee67be67f6340b4c0605b044b7" \
@@ -41,6 +41,9 @@ RUN set -eux; \
   # sed -i '864 s/^/\/\//' main.go; \
   # sed -i '874 s/^/\/\//' main.go; \
   # sed -i '358,361 s/^/\/\//' plugins.go; \
+  \
+  # fix case-insensitive import collision
+  # find . -type f -exec sed -i 's/github\.com\/Sirupsen\/logrus/github\.com\/sirupsen\/logrus/g' {} +; \
   \
   # build tyk
   go get -t -d -v; \    
